@@ -4,13 +4,13 @@ interface SortControlProps {
 export const SortControl = ({ updateSort }: SortControlProps) => {
     const sortOptions = ["New", "Old"];
     return (
-        <div>
+        <div className="sort-filter">
             <label>Sort By:</label>
             <select onChange={(e) => updateSort(e.target.value)}>
                 {sortOptions.map(sortOption => {
                     return (
                         <option key={sortOption} value={sortOption}>
-                            Date Uploaded - {sortOption}est First
+                            Upload Date - {sortOption}est First
                         </option>
                     )
                 })}

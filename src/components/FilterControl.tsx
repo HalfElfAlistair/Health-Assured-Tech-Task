@@ -3,9 +3,13 @@ interface FilterControlProps {
 }
 export const FilterControl = ({ updateSearchTerm }: FilterControlProps) => {
     return (
-        <div>
+        <div className="sort-filter">
             <label>Filter By Title:</label>
-            <input type="text" onChange={(e) => updateSearchTerm(e.target.value)} />
+            <input
+                type="text"
+                onChange={(e) => updateSearchTerm(e.target.value)}
+                placeholder="Search title..."
+            />
         </div>
     )
 }

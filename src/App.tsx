@@ -33,7 +33,7 @@ function App() {
         <h1>Health Assured Tech Task</h1>
         <p>Wisdom Wellbeing Resource Centre</p>
       </header>
-      <section>
+      <section className='sort-filter-container'>
         <SortControl updateSort={updateSort} />
         <FilterControl updateSearchTerm={updateSearchTerm} />
       </section>
