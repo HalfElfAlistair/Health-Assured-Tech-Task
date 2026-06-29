@@ -6,10 +6,11 @@ import { Category, Resource } from './types/resource';
 import { Group } from './components/Group';
 import { SortControl } from './components/SortControl';
 import { FilterControl } from './components/FilterControl';
+import { sortResources } from './utils/sortResources';
+import { filterResources } from './utils/filterResources';
 
 function App() {
   const resources = rawResources as Resource[];
-  const groupedResources = groupResources(resources);
   const [sortBy, setSortBy] = useState("New");
   const updateSort = (sortValue: string) => {
     setSortBy(sortValue);
@@ -19,6 +20,12 @@ function App() {
   const updateSearchTerm = (textValue: string) => {
     setTitleSearchTerm(textValue);
   }
+
+  const filteredResources = filterResources(resources, titleSearchTerm);
+
+  const sortedResources = sortResources(filteredResources, sortBy);
+
+  const groupedResources = groupResources(sortedResources);
 
   return (
     <main>
@@ -33,7 +40,13 @@ function App() {
       {
         (Object.entries(groupedResources) as [Category, Resource[]][])
           .map(([category, resources]) => {
-            return <Group key={category} category={category} resources={resources} sortBy={sortBy} />
+            return (
+              <Group
+                key={category}
+                category={category}
+                resources={resources}
+              />
+            )
           })
       }
     </main>
