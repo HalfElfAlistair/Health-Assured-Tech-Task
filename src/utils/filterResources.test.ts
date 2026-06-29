@@ -60,4 +60,12 @@ describe("filterResources", () => {
             "003"
         ]);
     })
+
+    test("returns matching resource titles that ignore casing differences", () => {
+        const filteredResources = filterResources(resources, "podcast");
+        expect(filteredResources.map(r => r.id)).toEqual([
+            "001",
+            "003"
+        ]);
+    })
 })
