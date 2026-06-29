@@ -38,12 +38,12 @@ describe("sortResources", () => {
     ];
 
     test("returns empty array if passed an empty array", () => {
-        const sortedResources = sortResources([]);
+        const sortedResources = sortResources([], "New");
         expect(sortedResources).toEqual([]);
     })
 
     test("returns array of resources in date order (newest first)", () => {
-        const sortedResources = sortResources(resources);
+        const sortedResources = sortResources(resources, "New");
         expect(sortedResources.map(r => r.id)).toEqual([
             "003",
             "001",
@@ -52,7 +52,7 @@ describe("sortResources", () => {
     })
 
     test("returns array of resources in date order (oldest first)", () => {
-        const sortedResources = sortResources(resources);
+        const sortedResources = sortResources(resources, "Old");
         expect(sortedResources.map(r => r.id)).toEqual([
             "002",
             "001",
