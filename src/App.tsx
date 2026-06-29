@@ -12,9 +12,19 @@ function App() {
     setSortBy(sortBy === "New" ? "Old" : "New");
   }
 
-  return Object.keys(groupedResources).map(category => {
-    return <h1>{category}</h1>
-  })
+  return (
+    <main>
+      <header>
+        <h1>Health Assured Tech Task</h1>
+        <p>Wisdom Wellbeing Resource Centre</p>
+      </header>
+      {Object.keys(groupedResources).map(category => {
+        return <h1>{category}</h1>
+      })}
+    </main>
+  )
+
+
 }
 
 export default App
