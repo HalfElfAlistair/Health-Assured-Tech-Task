@@ -4,8 +4,9 @@ interface FilterControlProps {
 export const FilterControl = ({ updateSearchTerm }: FilterControlProps) => {
     return (
         <div className="sort-filter">
-            <label>Filter By Title:</label>
+            <label htmlFor="filter-input">Filter By Title:</label>
             <input
+                id="filter-input"
                 type="text"
                 onChange={(e) => updateSearchTerm(e.target.value)}
                 placeholder="Search title..."
