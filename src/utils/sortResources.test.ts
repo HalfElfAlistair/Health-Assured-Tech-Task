@@ -50,4 +50,13 @@ describe("sortResources", () => {
             "002"
         ]);
     })
+
+    test("returns array of resources in date order (oldest first)", () => {
+        const sortedResources = sortResources(resources);
+        expect(sortedResources.map(r => r.id)).toEqual([
+            "002",
+            "001",
+            "003"
+        ]);
+    })
 })
