@@ -1,14 +1,12 @@
-import { Resource, Category } from '../types/resource';
+import { Resource } from '../types/resource';
 import { ResourceGroups } from '../types/resourceGroups';
 
-export const groupResources = (resources: Resource[]) => {
-    const result: ResourceGroups = {};
-    resources.forEach(resource => {
-        const category: Category = resource.category;
-        if (!result[category]) {
-            result[category] = [];
-        }
-        result[category].push(resource);
-    })
-    return result;
+export const groupResources = (resources: Resource[]): ResourceGroups => {
+    // uses reduce to loop through resources and accumulate groupedResources by category
+    return resources.reduce<ResourceGroups>((groupedResources, resource) => {
+        const category = resource.category;
+        // if category is assigned to groupedResources, push the resource, if not set as empty array first then push resource
+        (groupedResources[category] ??= []).push(resource);
+        return groupedResources;
+    }, {});
 }
