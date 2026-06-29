@@ -2,9 +2,35 @@
   padding: 2rem;
 }
 
+body {
+  font-family: quicksand;
+}
+
+h2,
 h3 {
   color: #244968;
+}
+
+h2 {
+  line-height: 1.25;
+  font-weight: 800;
+  margin: 0;
+  font-size: 22px;
+  margin-bottom: .5rem;
+}
+
+h3 {
   margin: 0 0 1rem;
+}
+
+span {
+  background-color: #3fafc1;
+  border-radius: .25rem;
+  width: 2.5rem;
+  height: 3px;
+  margin: 0;
+  margin-bottom: .75rem;
+  float: left;
 }
 
 img {
