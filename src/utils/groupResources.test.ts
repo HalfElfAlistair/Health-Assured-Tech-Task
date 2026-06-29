@@ -76,4 +76,9 @@ describe("groupResources", () => {
             ],
         });
     })
+
+    test("returns empty object if passed an empty array", () => {
+        const groupedResources = groupResources([]);
+        expect(groupedResources).toEqual({});
+    })
 })
