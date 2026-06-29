@@ -8,14 +8,16 @@ interface GroupProps {
 
 export const Group = ({ category, resources }: GroupProps) => {
     return (
-        <section>
+        <section className="group">
             <h2>{category}</h2>
             <span />
-            {resources.map(resource => {
-                return (
-                    <ResourceCard key={resource.id} resource={resource} />
-                )
-            })}
+            <div className="cards-container">
+                {resources.map(resource => {
+                    return (
+                        <ResourceCard key={resource.id} resource={resource} />
+                    )
+                })}
+            </div>
         </section>
     )
 }
