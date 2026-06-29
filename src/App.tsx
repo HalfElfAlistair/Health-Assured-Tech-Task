@@ -7,6 +7,11 @@ import { Resource } from './types/resource';
 function App() {
   const resources = rawResources as Resource[];
   const groupedResources = groupResources(resources);
+  const [sortBy, setSortBy] = useState("New");
+  const updateSort = () => {
+    setSortBy(sortBy === "New" ? "Old" : "New");
+  }
+
   return Object.keys(groupedResources).map(category => {
     return <h1>{category}</h1>
   })
