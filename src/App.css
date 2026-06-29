@@ -4,6 +4,7 @@
 
 body {
   font-family: quicksand;
+  margin-bottom: 20rem;
 }
 
 h1,
@@ -45,7 +46,7 @@ img {
   width: 100%;
   box-shadow: 0px 1px 5px 5px rgb(0 0 0 / 24%);
   border-radius: 1rem;
-  margin: 2rem 0 3rem
+  margin: 2rem 0 3rem;
 }
 
 .resource-card-content {
@@ -101,4 +102,36 @@ img {
 .sort-filter input {
   color: #244968;
   border: solid 2px #9B94C6;
+}
+
+@media only screen and (min-width: 412px) {
+  #root {
+    margin: auto;
+  }
+
+  body {
+    margin-bottom: 25rem;
+  }
+
+  .resource-card {
+    max-width: 348px;
+    margin: 2rem auto 3rem;
+  }
+}
+
+@media only screen and (min-width: 792px) {
+  h2 {
+    width: 100%;
+  }
+
+  .resource-card {
+    max-width: 348px;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 2rem;
+  }
 }
