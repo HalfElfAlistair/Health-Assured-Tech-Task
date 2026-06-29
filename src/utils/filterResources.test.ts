@@ -45,11 +45,19 @@ describe("filterResources", () => {
     })
 
     test("returns array with only resources that have a title which includes the provided search term", () => {
-
         const filteredResources = filterResources(resources, searchTerm);
         expect(filteredResources.map(r => r.id)).toEqual([
             "001",
-            "003",
+            "003"
+        ]);
+    })
+
+    test("returns array with no filtered out resources if search term is empty string", () => {
+        const filteredResources = filterResources(resources, "");
+        expect(filteredResources.map(r => r.id)).toEqual([
+            "001",
+            "002",
+            "003"
         ]);
     })
 })
