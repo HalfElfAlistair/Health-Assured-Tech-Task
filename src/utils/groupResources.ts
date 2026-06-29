@@ -1,13 +1,10 @@
-import { Resource } from '../types/resource';
-
-interface ResourceCategories {
-    [key: string]: Resource[];
-}
+import { Resource, Category } from '../types/resource';
+import { ResourceGroups } from '../types/resourceGroups';
 
 export const groupResources = (resources: Resource[]) => {
-    const result: ResourceCategories = {};
+    const result: ResourceGroups = {};
     resources.forEach(resource => {
-        const { category } = resource;
+        const category: Category = resource.category;
         if (!result[category]) {
             result[category] = [];
         }
