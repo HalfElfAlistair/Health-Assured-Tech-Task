@@ -37,8 +37,19 @@ describe("filterResources", () => {
         },
     ];
 
+    const searchTerm = "Podcast";
+
     test("returns empty array if passed an empty array", () => {
-        const filteredResources = filterResources([]);
+        const filteredResources = filterResources([], searchTerm);
         expect(filteredResources).toEqual([]);
+    })
+
+    test("returns array with only resources that have a title which includes the provided search term", () => {
+
+        const filteredResources = filterResources(resources, searchTerm);
+        expect(filteredResources.map(r => r.id)).toEqual([
+            "001",
+            "003",
+        ]);
     })
 })
