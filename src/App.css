@@ -119,6 +119,17 @@ img {
   }
 }
 
+@media only screen and (min-width: 650px) {
+  .sort-filter-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sort-filter {
+    width: 45%;
+  }
+}
+
 @media only screen and (min-width: 792px) {
   h2 {
     width: 100%;
