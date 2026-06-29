@@ -10,7 +10,7 @@ export enum Category {
 
 export interface Resource {
     id: string;
-    category: string;
+    category: Category;
     title: string;
     thumbnail: string;
     tags: string[],
