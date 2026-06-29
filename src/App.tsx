@@ -4,7 +4,7 @@ import rawResources from './data/resources.json';
 import { groupResources } from './utils/groupResources';
 import { Category, Resource } from './types/resource';
 import { Group } from './components/Group';
-import { SortFilterControls } from './components/SortFilterControls';
+import { SortControl } from './components/SortControl';
 
 function App() {
   const resources = rawResources as Resource[];
@@ -20,7 +20,9 @@ function App() {
         <h1>Health Assured Tech Task</h1>
         <p>Wisdom Wellbeing Resource Centre</p>
       </header>
-      <SortFilterControls updateSort={updateSort} />
+      <section>
+        <SortControl updateSort={updateSort} />
+      </section>
       {
         (Object.entries(groupedResources) as [Category, Resource[]][])
           .map(([category, resources]) => {
