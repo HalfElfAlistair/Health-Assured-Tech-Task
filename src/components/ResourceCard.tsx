@@ -7,17 +7,19 @@ interface ResourceCardProps {
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
     const { id, title, thumbnail, tags, duration, description } = resource;
     return (
-        <div key={id}>
-            <h3>{title}</h3>
-            <img src={thumbnail} alt={description} style={{ width: "300px" }} />
-            <div>
-                {tags.map((tag: string) => {
-                    return (
-                        <p key={tag}>{tag}</p>
-                    )
-                })}
+        <div key={id} className="resource-card">
+            <img src={thumbnail} alt={description} />
+            <div className="resource-card-content">
+                <h3>{title}</h3>
+                <div className="tags">
+                    {tags.map((tag: string) => {
+                        return (
+                            <p key={tag} className="tag">{tag}</p>
+                        )
+                    })}
+                </div>
+                <p><strong>Duration:</strong> {`${duration}`} minutes</p>
             </div>
-            <p>duration: {`${duration}`} minutes</p>
         </div>
     )
 }
