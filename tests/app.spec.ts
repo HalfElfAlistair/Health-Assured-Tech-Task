@@ -34,3 +34,10 @@ test('sorting by Old shows oldest resources first', async ({ page }) => {
     const sorted = [...dates].sort((a, b) => a - b);
     expect(dates).toEqual(sorted);
 });
+
+// gets all visible card titles
+const getCardTitles = async (page: Page): Promise<string[]> => {
+    return await page
+        .locator('[data-testid="resource-card"] [data-testid="resource-title"]')
+        .allTextContents();
+}
