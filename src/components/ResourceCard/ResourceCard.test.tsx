@@ -27,4 +27,9 @@ describe('ResourceCard', () => {
         expect(img).toHaveAttribute('src', mockResource.thumbnail);
         expect(img).toHaveAttribute('alt', "");
     })
+
+    test('renders the title', () => {
+        render(<ResourceCard resource={mockResource} />);
+        expect(screen.getByRole('heading', { name: mockResource.title })).toBeInTheDocument();
+    })
 })
