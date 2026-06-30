@@ -23,10 +23,13 @@ describe('FilterControl', () => {
 
         render(<FilterControl updateSearchTerm={mockUpdateSearchTerm} />);
 
+        // simulates user entering 'test' into the text input
         await user.type(screen.getByRole('textbox'), 'test')
 
+        // checks text input value has updated to correlate with user input
         expect(screen.getByRole('textbox')).toHaveValue('test')
 
+        // checks updater function is called with the correct value
         expect(mockUpdateSearchTerm).toHaveBeenCalledWith('test');
     })
 })

@@ -27,8 +27,10 @@ describe('SortControl', () => {
 
         render(<SortControl updateSort={mockUpdateSort} />);
 
+        // simulates user selecting the sort by oldest first option
         await user.selectOptions(screen.getByRole('combobox'), 'Old');
 
+        // checks updater function is called with the correct value
         expect(mockUpdateSort).toHaveBeenCalledWith('Old');
     });
 })
