@@ -9,6 +9,7 @@ export const SortControl = ({ updateSort }: SortControlProps) => {
             <select
                 id="sort-input"
                 onChange={(e) => updateSort(e.target.value)}
+                data-testid="sort-control"
             >
                 {sortOptions.map(sortOption => {
                     return (
