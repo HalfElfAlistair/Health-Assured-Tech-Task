@@ -81,6 +81,4 @@ describe('Group', () => {
         const resourceCards = screen.getAllByTestId('resource-card');
         expect(resourceCards).toHaveLength(3);
     })
-
-
 })
