@@ -9,7 +9,7 @@ interface GroupProps {
 export const Group = ({ category, resources }: GroupProps) => {
     return (
         <section className="group">
-            <h2>{category}</h2>
+            <h2 data-testid="group-header">{category}</h2>
             <span />
             <div className="cards-container">
                 {resources.map(resource => {
