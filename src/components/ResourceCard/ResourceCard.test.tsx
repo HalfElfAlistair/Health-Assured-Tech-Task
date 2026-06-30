@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ResourceCard } from './ResourceCard';
 import { describe, test, expect } from 'vitest';
 import { Category, Resource } from '../../types/resource';
+import { axe } from 'jest-axe';
 
 describe('ResourceCard', () => {
     const mockResource: Resource = {
@@ -70,4 +71,10 @@ describe('ResourceCard', () => {
         const tags = screen.getAllByTestId('tag');
         expect(tags).toHaveLength(3);
     })
+
+    test('is accessible', async () => {
+        const { container } = render(<ResourceCard resource={mockResource} />);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
 })

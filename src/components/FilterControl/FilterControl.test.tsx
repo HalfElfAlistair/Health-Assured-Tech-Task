@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { FilterControl } from './FilterControl';
 import { describe, test, expect, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 
 describe('FilterControl', () => {
     test('renders the filter text input', () => {
@@ -32,4 +33,11 @@ describe('FilterControl', () => {
         // checks updater function is called with the correct value
         expect(mockUpdateSearchTerm).toHaveBeenCalledWith('test');
     })
+
+    test('is accessible', async () => {
+        const mockUpdateSearchTerm = vi.fn();
+        const { container } = render(<FilterControl updateSearchTerm={mockUpdateSearchTerm} />);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
 })
