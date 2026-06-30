@@ -48,29 +48,6 @@ This behaviour is tested across Chromium, Firefox, and WebKit.
 
 - ESLint + Prettier (consistent formatting and linting)
 
-## Project Structure
-
-src/\
-  components/\
-    ResourceCard.tsx\
-    ResourceList.tsx\
-  data/\
-    resources.json\
-  hooks/\
-    useFilter.ts\
-    useSort.ts\
-  App.tsx\
-tests/\
-  app.spec.ts\
-
-- ResourceCard renders individual resource items
-
-- ResourceList handles grouping, sorting, and filtering
-
-- resources.json contains the static dataset
-
-- app.spec.ts contains the full Playwright suite
-
 ## Testing
 
 The project uses React Testing Library, Vitest, and Playwright to test the following:
