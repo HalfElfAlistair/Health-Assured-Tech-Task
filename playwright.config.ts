@@ -32,6 +32,9 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  // ignore dist so playwright doesn't try to run from it
+  testIgnore: ['dist/**', '**/*.js'],
+
   /* Configure projects for major browsers */
   projects: [
     {
