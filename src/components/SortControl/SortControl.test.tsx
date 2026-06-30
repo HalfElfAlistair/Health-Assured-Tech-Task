@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { SortControl } from './SortControl';
 import { describe, test, expect, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 
 describe('SortControl', () => {
     test('renders the sort select with options', () => {
@@ -32,6 +33,13 @@ describe('SortControl', () => {
 
         // checks updater function is called with the correct value
         expect(mockUpdateSort).toHaveBeenCalledWith('Old');
+    });
+
+    test('is accessible', async () => {
+        const mockUpdateSort = vi.fn();
+        const { container } = render(<SortControl updateSort={mockUpdateSort} />);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
     });
 })
 
