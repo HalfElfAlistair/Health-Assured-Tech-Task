@@ -1,50 +1,177 @@
-# React + TypeScript + Vite
+# Health Assured Tech Task — Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small, focused React + TypeScript application built for the Health Assured technical assessment.
 
-Currently, two official plugins are available:
+The project displays a list of wellbeing resources, with support for filtering, sorting, and automatic grouping.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It includes a full Playwright test suite covering all meaningful user interactions.
 
-## Expanding the ESLint configuration
+Task instructions can be found at the bottom of Readme
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+### Filtering
+Users can filter resources by title using a text input.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Filtering is fully reactive and updates the list as the user types.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Sorting
+Resources can be sorted by upload date (newest → oldest or oldest → newest).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Sorting is implemented client‑side and updates instantly.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Automatic Grouping
+Resources are automatically grouped by category.
+
+Each group is rendered with a header and its associated items beneath it.
+
+### Accessible Keyboard Navigation
+The interface supports keyboard navigation:
+
+Tab → Sort control
+
+Tab → Filter control
+
+(No other interactive elements, resource cards are informational only)
+
+This behaviour is tested across Chromium, Firefox, and WebKit.
+
+## Tech Stack
+
+- React (functional components + hooks)
+
+- TypeScript
+
+- Vite (fast dev server + build tooling)
+
+- Playwright (cross‑browser E2E testing)
+
+- ESLint + Prettier (consistent formatting and linting)
+
+## Project Structure
+
+src/\
+  components/\
+    ResourceCard.tsx\
+    ResourceList.tsx\
+  data/\
+    resources.json\
+  hooks/\
+    useFilter.ts\
+    useSort.ts\
+  App.tsx\
+tests/\
+  app.spec.ts\
+
+- ResourceCard renders individual resource items
+
+- ResourceList handles grouping, sorting, and filtering
+
+- resources.json contains the static dataset
+
+- app.spec.ts contains the full Playwright suite
+
+## Testing
+
+The project uses React Testing Library, Vitest, and Playwright to test the following:
+
+1. Page Load
+Ensures the app renders correctly and resources are visible.
+
+2. Filtering
+Typing into the filter input updates the list and hides non‑matching items.
+
+3. Sorting
+Sorting by date correctly reorders the resource cards.
+
+4. Grouping
+Resources are grouped automatically by category, with each group containing at least one item.
+
+5. Keyboard Navigation
+Cross‑browser‑safe test verifying tab order:
+
+Sort control
+
+Filter control
+
+Resource cards are not tabbable because they contain no interactive elements — this is intentional and accessibility‑correct.
+
+All tests run in:
+
+Chromium
+
+Firefox
+
+WebKit
+
+## Running the Project
+
+### Install dependencies:
+
+npm install
+
+### Start the dev server:
+
+npm run dev
+
+### Run the test suite:
+
+npm run test
+
+### Run tests in headed mode:
+
+npm run test:ui
+
+## Notes
+
+Grouping is automatic — there is no grouping control.
+
+Resource cards are intentionally non‑interactive and therefore not part of the tab order.
+
+The Playwright suite includes WebKit‑specific handling to ensure reliable keyboard navigation tests.
+
+As the instructions below indicate, the task requires at least two of the following features:
+
+- When a user clicks on a resource, display all the resource data including the description and date uploaded
+- Sort the cards by category/date
+- Filter by title/tags
+
+I went with a date sort, and a title filter. Naturally with more time I'd have added a modal to display the full resource details, category sort and tags filter. Tag filtering, in particular, would have been interesting to work on as I'd have liked to set it to display the relevant tag as one of the three available (pushing it to the front of the list).
+
+While I've employed Playwright end-to-end testing here, I had a nightmare trying to get it hooked into my CI process (eventually knocking that on the head). I'd like to take another look at troubleshooting that at some point.
+
+## Task Instructions
+
+HA | Wisdom Wellbeing is focused on offering tools and services to our clients to support their physical and mental
+wellbeing with one of our features being the Resource Centre. For this task, we would like you to create a single page
+application that displays different resources grouped by their category.
+
+Resources should be grouped by their category on the page on first load. Each resource can only belong to one of the
+following categories
+
+- Podcasts
+- Articles
+- Newsletters
+- Recipes
+- Fitness
+- Meditation
+
+### Functionality
+
+Display the grouped resources, each with
+
+- Title
+- Thumbnail Image
+- Tags: no more than 3
+- Read/watch time in minutes
+
+Please add at least two of the following features:
+
+- When a user clicks on a resource, display all the resource data including the description and date uploaded
+- Sort the cards by category/date
+- Filter by title/tags
+
+### The Data
+
+For this task, you are not required to integrate with an external API. Instead, please use mock data to simulate the
+dataset. An example of a JSON you can use is at the end of this document.
