@@ -72,6 +72,11 @@ describe('ResourceCard', () => {
         expect(tags).toHaveLength(3);
     })
 
+    test('renders date', () => {
+        render(<ResourceCard resource={mockResource} />);
+        expect(screen.getByText(`${mockResource.date_uploaded}`)).toBeInTheDocument();
+    })
+
     test('is accessible', async () => {
         const { container } = render(<ResourceCard resource={mockResource} />);
         const results = await axe(container);
