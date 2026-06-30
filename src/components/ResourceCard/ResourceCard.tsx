@@ -7,7 +7,7 @@ interface ResourceCardProps {
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
     const { id, title, thumbnail, tags, duration, description } = resource;
     return (
-        <div key={id} className="resource-card">
+        <div key={id} className="resource-card" data-testid="resource-card">
             <img src={thumbnail} alt={description} />
             <div className="resource-card-content">
                 <h3>{title}</h3>
