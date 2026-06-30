@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { SortControl } from './SortControl';
 import { describe, test, expect, vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 describe('SortControl', () => {
     test('renders the sort select with options', () => {
@@ -19,6 +20,17 @@ describe('SortControl', () => {
         expect(screen.getByRole('option', { name: /new/i })).toBeInTheDocument();
         expect(screen.getByRole('option', { name: /old/i })).toBeInTheDocument();
     })
+
+    test('calls updateSort when a new option is selected', async () => {
+        const mockUpdateSort = vi.fn();
+        const user = userEvent;
+
+        render(<SortControl updateSort={mockUpdateSort} />);
+
+        await user.selectOptions(screen.getByRole('combobox'), 'Old');
+
+        expect(mockUpdateSort).toHaveBeenCalledWith('Old');
+    });
 })
 
 
