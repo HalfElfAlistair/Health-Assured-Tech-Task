@@ -5,9 +5,9 @@ import userEvent from '@testing-library/user-event';
 
 describe('FilterControl', () => {
     test('renders the filter text input', () => {
-        const updateSearchTerm = vi.fn();
+        const mockUpdateSearchTerm = vi.fn();
 
-        render(<FilterControl updateSearchTerm={updateSearchTerm} />);
+        render(<FilterControl updateSearchTerm={mockUpdateSearchTerm} />);
 
         // checks label text to test visibility
         expect(screen.getByLabelText(/filter/i)).toBeInTheDocument();
