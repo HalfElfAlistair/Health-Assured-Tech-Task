@@ -16,4 +16,17 @@ describe('FilterControl', () => {
         const textInput = screen.getByRole('textbox');
         expect(textInput).toBeInTheDocument();
     })
+
+    test('calls updateSearchTerm when text is inputted', async () => {
+        const mockUpdateSearchTerm = vi.fn();
+        const user = userEvent;
+
+        render(<FilterControl updateSearchTerm={mockUpdateSearchTerm} />);
+
+        await user.type(screen.getByRole('textbox'), 'test')
+
+        expect(screen.getByRole('textbox')).toHaveValue('test')
+
+        expect(mockUpdateSearchTerm).toHaveBeenCalledWith('test');
+    })
 })
