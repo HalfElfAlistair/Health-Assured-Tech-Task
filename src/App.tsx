@@ -3,9 +3,9 @@ import './App.css';
 import rawResources from './data/resources.json';
 import { groupResources } from './utils/groupResources';
 import { Category, Resource } from './types/resource';
-import { Group } from './components/Group';
-import { SortControl } from './components/SortControl';
-import { FilterControl } from './components/FilterControl';
+import { Group } from './components/Group/Group';
+import { SortControl } from './components/SortControl/SortControl';
+import { FilterControl } from './components/FilterControl/FilterControl';
 import { sortResources } from './utils/sortResources';
 import { filterResources } from './utils/filterResources';
 

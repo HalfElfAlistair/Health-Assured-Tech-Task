@@ -1,5 +1,5 @@
-import { Category, Resource } from "../types/resource";
-import { ResourceCard } from "./ResourceCard";
+import { Category, Resource } from "../../types/resource";
+import { ResourceCard } from "../ResourceCard/ResourceCard";
 
 interface GroupProps {
     category: Category;

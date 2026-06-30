@@ -1,4 +1,4 @@
-import { Resource } from "../types/resource";
+import { Resource } from "../../types/resource";
 
 interface ResourceCardProps {
     resource: Resource;
