@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import './App.css';
 import rawResources from './data/resources.json';
 import { groupResources } from './utils/groupResources';
@@ -21,11 +21,17 @@ function App() {
     setTitleSearchTerm(textValue);
   }
 
-  const filteredResources = filterResources(resources, titleSearchTerm);
+  const filteredResources = useMemo(() => {
+    return filterResources(resources, titleSearchTerm);
+  }, [resources, titleSearchTerm]);
 
-  const sortedResources = sortResources(filteredResources, sortBy);
+  const sortedResources = useMemo(() => {
+    return sortResources(filteredResources, sortBy);
+  }, [filteredResources, sortBy]);
 
-  const groupedResources = groupResources(sortedResources);
+  const groupedResources = useMemo(() => {
+    return groupResources(sortedResources);
+  }, [sortedResources]);
 
   return (
     <main>
