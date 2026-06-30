@@ -22,7 +22,7 @@ describe('ResourceCard', () => {
     test('renders the image with appropriate attributes', () => {
         render(<ResourceCard resource={mockResource} />);
 
-        const img = screen.getByRole('img');
+        const img = screen.getByRole('presentation');
         expect(img).toBeInTheDocument();
         expect(img).toHaveAttribute('src', mockResource.thumbnail);
         expect(img).toHaveAttribute('alt', "");
