@@ -14,7 +14,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
                 <div className="tags">
                     {tags.map((tag: string) => {
                         return (
-                            <p key={tag} className="tag">{tag}</p>
+                            <p key={tag} className="tag" data-testid="tag">{tag}</p>
                         )
                     })}
                 </div>
