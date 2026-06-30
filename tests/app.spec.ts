@@ -23,3 +23,14 @@ test('sorting by New shows newest resources first', async ({ page }) => {
     const sorted = [...dates].sort((a, b) => b - a);
     expect(dates).toEqual(sorted);
 });
+
+test('sorting by Old shows oldest resources first', async ({ page }) => {
+    await page.goto('http://localhost:5173');
+
+    await page.locator('[data-testid="sort-control"]').selectOption('Old');
+
+    const dates = await getCardDates(page);
+
+    const sorted = [...dates].sort((a, b) => a - b);
+    expect(dates).toEqual(sorted);
+});
