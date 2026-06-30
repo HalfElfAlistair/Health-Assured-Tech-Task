@@ -14,7 +14,7 @@ export interface Resource {
     title: string;
     thumbnail: string;
     tags: string[],
-    duration: Number,
+    duration: number,
     description: string;
     date_uploaded: string;
 }
