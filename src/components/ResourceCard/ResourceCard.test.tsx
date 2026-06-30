@@ -32,4 +32,9 @@ describe('ResourceCard', () => {
         render(<ResourceCard resource={mockResource} />);
         expect(screen.getByRole('heading', { name: mockResource.title })).toBeInTheDocument();
     })
+
+    test('renders the duration', () => {
+        render(<ResourceCard resource={mockResource} />);
+        expect(screen.getByText(`${mockResource.duration} minutes`)).toBeInTheDocument();
+    })
 })
