@@ -41,3 +41,22 @@ const getCardTitles = async (page: Page): Promise<string[]> => {
         .locator('[data-testid="resource-card"] [data-testid="resource-title"]')
         .allTextContents();
 }
+
+test('filtering by text reduces visible cards and matches search term', async ({ page }) => {
+    await page.goto('http://localhost:5173');
+
+    const initialTitles = await getCardTitles(page);
+    expect(initialTitles.length).toBeGreaterThan(0);
+
+    const searchTerm = 'mind';
+    await page.locator('[data-testid="filter-control"]').fill(searchTerm);
+
+    const filteredTitles = await getCardTitles(page);
+
+    expect(filteredTitles.length).toBeLessThanOrEqual(initialTitles.length);
+    expect(filteredTitles.length).toBeGreaterThan(0);
+
+    filteredTitles.forEach(title => {
+        expect(title.toLowerCase()).toContain(searchTerm.toLowerCase());
+    });
+});
