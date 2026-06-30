@@ -82,3 +82,26 @@ test('resources are grouped automatically on page load', async ({ page }) => {
         expect(count).toBeGreaterThan(0);
     }
 });
+
+test('keyboard navigation tabs through controls in correct order', async ({ page }) => {
+    await page.goto('http://localhost:5173');
+
+    // ensures something is focused before tabbing
+    await page.locator('body').focus();
+
+    // tab until sort-control is focused
+    for (let i = 0; i < 10; i++) {
+        await page.keyboard.press('Tab');
+        const focused = await page.locator(':focus').getAttribute('data-testid');
+        if (focused === 'sort-control') break;
+    }
+    expect(await page.locator(':focus').getAttribute('data-testid')).toBe('sort-control');
+
+    // tab until filter-control is focused
+    for (let i = 0; i < 10; i++) {
+        await page.keyboard.press('Tab');
+        const focused = await page.locator(':focus').getAttribute('data-testid');
+        if (focused === 'filter-control') break;
+    }
+    expect(await page.locator(':focus').getAttribute('data-testid')).toBe('filter-control');
+});
