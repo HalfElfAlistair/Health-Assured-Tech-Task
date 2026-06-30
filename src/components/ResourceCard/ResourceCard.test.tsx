@@ -46,6 +46,7 @@ describe('ResourceCard', () => {
     })
 
     test('renders no more than three tags', () => {
+        // uses locally scoped mockResource with more tags than three
         const mockResource: Resource = {
             "id": "001",
             "category": Category.Podcasts,
@@ -65,6 +66,7 @@ describe('ResourceCard', () => {
         }
         render(<ResourceCard resource={mockResource} />);
 
+        // uses test id to access rendered tags and counts them to check if more than three
         const tags = screen.getAllByTestId('tag');
         expect(tags).toHaveLength(3);
     })
