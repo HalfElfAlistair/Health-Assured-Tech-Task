@@ -60,3 +60,25 @@ test('filtering by text reduces visible cards and matches search term', async ({
         expect(title.toLowerCase()).toContain(searchTerm.toLowerCase());
     });
 });
+
+test('resources are grouped automatically on page load', async ({ page }) => {
+    await page.goto('http://localhost:5173');
+
+    //   waits for grouped headers to appear
+    await page.waitForSelector('[data-testid="group-header"]');
+
+    const headers = page.locator('[data-testid="group-header"]');
+    const headerCount = await headers.count();
+
+    expect(headerCount).toBeGreaterThan(0);
+
+    // checks at least one card is rendered for each group
+    for (let i = 0; i < headerCount; i++) {
+        const headerText = await headers.nth(i).innerText();
+
+        const cardsInGroup = page.locator(`[data-group="${headerText}"]`);
+        const count = await cardsInGroup.count();
+
+        expect(count).toBeGreaterThan(0);
+    }
+});
