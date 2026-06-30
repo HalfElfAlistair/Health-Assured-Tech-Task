@@ -10,6 +10,7 @@ export const FilterControl = ({ updateSearchTerm }: FilterControlProps) => {
                 type="text"
                 onChange={(e) => updateSearchTerm(e.target.value)}
                 placeholder="Search title..."
+                data-testid="filter-control"
             />
         </div>
     )
