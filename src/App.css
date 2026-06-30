@@ -114,19 +114,30 @@ img {
   }
 
   .resource-card {
-    max-width: 348px;
     margin: 2rem auto 3rem;
   }
 }
 
 @media only screen and (min-width: 650px) {
-  .sort-filter-container {
+
+  .sort-filter-container,
+  .cards-container {
     display: flex;
     justify-content: space-between;
   }
 
+  .cards-container {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
   .sort-filter {
     width: 45%;
+  }
+
+  .resource-card {
+    width: 45%;
+    margin: 2rem 0 3rem;
   }
 }
 
@@ -134,15 +145,21 @@ img {
   h2 {
     width: 100%;
   }
+}
 
+@media only screen and (min-width: 874px) {
   .resource-card {
-    max-width: 348px;
+    width: 30%;
   }
 
   .cards-container {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: start;
-    gap: 2rem;
+    gap: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  main {
+    max-width: 960px;
   }
 }
